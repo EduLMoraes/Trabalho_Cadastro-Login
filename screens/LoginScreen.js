@@ -4,6 +4,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import { auth } from '../firebase'
 
 import Cadastro from "./Cadastro";
+import HomeScreen from './HomeScreen'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -16,14 +17,17 @@ const LoginScreen = () => {
       if (user) {
         navigation.replace("Home")
       }
+      else {
+        navigation.replace("Cadastro")
+      }
     })
 
     return unsubscribe
   }, [])
 
-  const handleSignUp = () => {
-    <Cadastro></Cadastro>
-  }
+ function Cadastrar(){
+  navigation.replace("Cadastro")
+ }
 
   const handleLogin = () => {
     auth
@@ -63,8 +67,9 @@ const LoginScreen = () => {
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
-          onPress={handleSignUp}
+          onPress={Cadastrar}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Register</Text>

@@ -53,12 +53,12 @@ function Cadastrar(params){
 
   return (
       <Drawer.Navigator initinalRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen}/>
-        <Drawer.Screen name="Login" component={LoginScreen}/>
-        <Drawer.Screen name="Escrever" component={EscreverScreen}/>
-        <Drawer.Screen name="Listar" component={Listar}/>
+        <Drawer.Screen name="Home"              component={HomeScreen}/>
+        <Drawer.Screen name="Login"             component={LoginScreen}/>
+        <Drawer.Screen name="Escrever"          component={EscreverScreen}/>
+        <Drawer.Screen name="Listar"            component={Listar}/>
         <Drawer.Screen name="Listar com filtro" component={ListarComFiltro}/>
-        <Drawer.Screen name="Cadastrar" component={Cadastrar} />
+        <Drawer.Screen name="Cadastrar"         component={Cadastrar} />
       </Drawer.Navigator>
   )
 }
