@@ -6,6 +6,7 @@ import { auth,firestore } from '../firebase'
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 
+import Cadastro from './Cadastro'
 import Home from './HomeScreen'
 import Escrever from './Escrever';
 import Login from "./LoginScreen";
@@ -40,6 +41,11 @@ function ListarComFiltro(params) {
   <ListarcomFiltroScreen></ListarcomFiltroScreen>
   );
 }
+function Cadastrar(params){
+  return(
+        <Cadastro></Cadastro>
+  );
+}
 
 
  
@@ -52,6 +58,7 @@ function ListarComFiltro(params) {
         <Drawer.Screen name="Escrever" component={EscreverScreen}/>
         <Drawer.Screen name="Listar" component={Listar}/>
         <Drawer.Screen name="Listar com filtro" component={ListarComFiltro}/>
+        <Drawer.Screen name="Cadastrar" component={Cadastrar} />
       </Drawer.Navigator>
   )
 }
