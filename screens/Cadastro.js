@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
@@ -19,6 +20,9 @@ const Cadastro = () => {
 
     return unsubscribe
   }, [])
+  const cancelar = () =>{
+    navigation.replace("Login")
+  }
 
   const handleSignUp = () => {
     auth
@@ -42,7 +46,6 @@ const Cadastro = () => {
     });
    
  }
-
 
 
   return (
@@ -74,7 +77,7 @@ const Cadastro = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={handleLogin}
+          onPress={cancelar}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Cancelar</Text>

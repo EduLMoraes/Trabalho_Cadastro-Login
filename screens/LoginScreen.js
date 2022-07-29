@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
@@ -17,16 +18,13 @@ const LoginScreen = () => {
       if (user) {
         navigation.replace("Home")
       }
-      else {
-        navigation.replace("Cadastro")
-      }
     })
 
     return unsubscribe
   }, [])
 
- function Cadastrar(){
-  navigation.replace("Cadastro")
+ const Cadastrar = () => {
+    navigation.replace("Cadastra")
  }
 
   const handleLogin = () => {
