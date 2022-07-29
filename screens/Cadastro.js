@@ -5,7 +5,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import { auth } from '../firebase'
 
 const Cadastro = () => {
-  const [user, setUser] = useState('')
+  const [users, setUsers] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -32,20 +32,23 @@ const Cadastro = () => {
         console.log('Registered with:', user.email);
       })
       .catch(error => alert(error.message))
+
+      const enviarDados = () => {
+        firestore
+        .collection('User')
+        .add({
+            id: user.id,
+            users: users,
+            email: email,
+        })
+        .then(() => {
+          alert('Usuario '+users+' Adicionado com Sucesso')
+          
+        });
+       
+     }
+     return enviarDados
   }
-  const enviarDados = () => {
-    firestore
-    .collection('User')
-    .add({
-        user: user,
-        email: email,
-    })
-    .then(() => {
-      alert('Usuario '+user+' Adicionado com Sucesso')
-      
-    });
-   
- }
 
 
   return (
@@ -57,7 +60,7 @@ const Cadastro = () => {
         <TextInput
           placeholder="Usuario"
           value={user}
-          onChangeText={text => setUser(text)}
+          onChangeText={text => setUsers(text)}
           style={styles.input}
         />
         <TextInput

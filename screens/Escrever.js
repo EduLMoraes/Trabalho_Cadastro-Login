@@ -5,21 +5,22 @@ import MeuEstilo from '../../OneDrive/Desktop/programar/Projetos/Trabalho/meuest
 import { auth,firestore } from '../../OneDrive/Desktop/programar/Projetos/Trabalho/firebase'
 
 const Escrever = () => {
-  const [nome, setNome] = useState('')
-  const [raca, setRaca] = useState('')
-  const [cor, setCor] = useState('')
+  const [casa,  setCasa] = useState('')
+  const [lat,   setLat] = useState('')
+  const [long,  setLong] = useState('')
   
 
   const enviarDados = () => {
      firestore
-     .collection('Gato')
+     .collection('Casa')
      .add({
-       nome: nome,
-       raca: raca, 
-       cor: cor, 
+       id:    user.id,
+       casa:  casa,
+       lat:   lat, 
+       long:  long, 
      })
      .then(() => {
-       alert('Gato '+nome+' Adicionado com Sucesso')
+       alert('Casa '+casa+' Adicionado com Sucesso')
        
      });
     
@@ -36,21 +37,21 @@ const Escrever = () => {
     >
       <View style={MeuEstilo.inputcontainerlistar}>
         <TextInput
-          placeholder="Nome"
-          value={nome}
-          onChangeText={text => setNome(text)}
+          placeholder="casa"
+          value={casa}
+          onChangeText={text => setCasa(text)}
           style={MeuEstilo.input}
         />
         <TextInput
-          placeholder="Raça"
-          value={raca}
-          onChangeText={text => setRaca(text)}
+          placeholder="Latitude"
+          value={lat}
+          onChangeText={text => setLat(text)}
           style={MeuEstilo.input}
         />
           <TextInput
-          placeholder="Cor"
-          value={cor}
-          onChangeText={text => setCor(text)}
+          placeholder="Longitude"
+          value={long}
+          onChangeText={text => setLong(text)}
           style={MeuEstilo.input}
         />
        
