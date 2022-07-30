@@ -59,7 +59,7 @@ const Cadastro = () => {
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Usuario"
-          value={user}
+          value={users}
           onChangeText={text => setUsers(text)}
           style={styles.input}
         />

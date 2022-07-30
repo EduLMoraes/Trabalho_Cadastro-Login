@@ -14,7 +14,7 @@ const Escrever = () => {
      firestore
      .collection('Casa')
      .add({
-       id:    user.id,
+       id:    user.ID,
        casa:  casa,
        lat:   lat, 
        long:  long, 
