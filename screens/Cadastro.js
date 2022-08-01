@@ -20,6 +20,7 @@ const Cadastro = () => {
 
     return unsubscribe
   }, [])
+
   const cancelar = () =>{
     navigation.replace("Login")
   }
@@ -32,23 +33,22 @@ const Cadastro = () => {
         console.log('Registered with:', user.email);
       })
       .catch(error => alert(error.message))
-
-      const enviarDados = () => {
-        firestore
-        .collection('User')
-        .add({
-            id: user.id,
-            users: users,
-            email: email,
-        })
-        .then(() => {
-          alert('Usuario '+users+' Adicionado com Sucesso')
-          
-        });
-       
-     }
-     return enviarDados
   }
+
+const enviarDados = () => {
+    firestore
+    .collection('User')
+    .add({
+        id: user.id,
+        users: users,
+        email: email,
+    })
+    .then(() => {
+      alert('Usuario '+users+' Adicionado com Sucesso')
+      
+    })
+    .catch(error => alert(error.message))
+}
 
 
   return (

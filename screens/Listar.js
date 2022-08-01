@@ -1,23 +1,23 @@
 import React ,{useState, useEffect} from 'react'
 import {ActivityIndicator, SafeAreaView, View, FlatList, MeuEstiloheet, Text, StatusBar } from 'react-native';
-import { auth,firestore } from '../firebase'
+import { auth, firestore } from '../firebase'
 import MeuEstilo from '../meuestilo';
 
 const Listar = () => {
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [helicopteros, setHelicopteros] = useState([]); // Initial empty array of users
+  const [casas, setCasas] = useState([]); // Initial empty array of users
 
   useEffect(() => {
-    const subscriber = firestore.collection('Helicoptero')
+    const subscriber = firestore.collection('Casa')
       .onSnapshot(querySnapshot => {
-        const helicopteros = [];
+        const casas = [];
         querySnapshot.forEach(documentSnapshot => {
-          helicopteros.push({
+          casas.push({
             ...documentSnapshot.data(),
             key: documentSnapshot.nome,
           });
         });
-        setHelicopteros(helicopteros);
+        setCasas(casas);
         setLoading(false);
       });
     // Unsubscribe from events when no longer in use
@@ -38,7 +38,7 @@ const Item = ({ nome }) => (
 
   const renderItem = ({ item }) => <Item nome={item.nome} />;
 
-  // const getHelicopteros= ()=>{
+  // const getcasas= ()=>{
   //   setGatos([]);
   //   firestore
   //   .collection('Helicoptero')
@@ -46,11 +46,11 @@ const Item = ({ nome }) => (
   //     //querySnapshot.forEach(documentSnapshot=>{
   //     querySnapshot.docChanges().forEach(change=>{
         
-  //       helicopteros.push({...change.doc.data(),
+  //       casas.push({...change.doc.data(),
   //         key: change.nome,
   //       });
   //     });
-  //     setHelicopteros(helicopteros);
+  //     setCasas(casas);
   //     // setCarregando(false);
   //   });
   //   // return()=>subscriber();
@@ -74,12 +74,12 @@ const Item = ({ nome }) => (
   return (
     <SafeAreaView style={MeuEstilo.containerlistar}>
       <FlatList 
-      data={helicopteross} 
+      data={casass} 
       renderItem={renderItem} 
       keyExtractor={item => item.nome} 
       // refreshing={true}
       // onRefresh={() => {
-      //   getHelicopteros();
+      //   getcasas();
       // }}
       />
     </SafeAreaView>

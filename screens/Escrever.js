@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {  View,  Text,  TextInput,  TouchableOpacity,  KeyboardAvoidingView
 } from 'react-native';
-import MeuEstilo from '../../OneDrive/Desktop/programar/Projetos/Trabalho/meuestilo'
-import { auth,firestore } from '../../OneDrive/Desktop/programar/Projetos/Trabalho/firebase'
+import MeuEstilo from '../meuestilo'
+import { auth,firestore } from '../firebase'
 
 const Escrever = () => {
   const [casa,  setCasa] = useState('')
@@ -14,7 +14,7 @@ const Escrever = () => {
      firestore
      .collection('Casa')
      .add({
-       id:    user.ID,
+       id:    user.uid,
        casa:  casa,
        lat:   lat, 
        long:  long, 
