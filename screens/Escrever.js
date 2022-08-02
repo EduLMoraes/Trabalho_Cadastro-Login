@@ -9,7 +9,7 @@ const Escrever = () => {
   const [lat,   setLat] = useState('')
   const [long,  setLong] = useState('')
   
-ref = firestore.collection('User').doc(auth.currentUser.uid).collection('Casa').doc()
+  const ref = firestore.collection('User').doc(auth.currentUser.uid).collection('Casa').doc()
 
   const enviarDados = () => {
      ref.set({

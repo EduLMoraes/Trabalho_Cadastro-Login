@@ -18,9 +18,7 @@ const Cadastro = () => {
         navigation.replace("Home")
       }
     })
-
-    return unsubscribe
-  }, [])
+  })
 
   const cancelar = () =>{
     navigation.replace("Login")
@@ -35,23 +33,21 @@ const Cadastro = () => {
       })
       .catch(error => alert(error.message))
 
-      enviarDados
+    firestore
+      .collection('User').doc(user.uid)
+      .set({
+          id: user.uid,
+          users: users,
+          email: email,
+      })
+      .then(() => {
+        alert('Usuario '+users+' Adicionado com Sucesso')
+        
+      })
+      .catch(error => alert(error.message))
   }
 
-  const enviarDados = () => {
-    firestore
-    .collection('User').doc(user.uid)
-    .set({
-        id: user.uid,
-        users: users,
-        email: email,
-    })
-    .then(() => {
-      alert('Usuario '+users+' Adicionado com Sucesso')
-      
-    })
-    .catch(error => alert(error.message))
-}
+  
 
   return (
     <KeyboardAvoidingView
