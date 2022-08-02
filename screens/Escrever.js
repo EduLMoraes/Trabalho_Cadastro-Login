@@ -9,21 +9,18 @@ const Escrever = () => {
   const [lat,   setLat] = useState('')
   const [long,  setLong] = useState('')
   
+ref = firestore.collection('User').doc(auth.currentUser.uid).collection('Casa').doc()
 
   const enviarDados = () => {
-     firestore
-     .collection('Casa')
-     .add({
-       id:    user.uid,
+     ref.set({
        casa:  casa,
        lat:   lat, 
-       long:  long, 
+       long:  long,
+       id: ref.id, 
      })
      .then(() => {
        alert('Casa '+casa+' Adicionado com Sucesso')
-       
      });
-    
   }
 
   const limparFormulario = () => {

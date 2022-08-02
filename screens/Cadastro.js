@@ -11,6 +11,7 @@ const Cadastro = () => {
 
   const navigation = useNavigation()
 
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
@@ -33,13 +34,15 @@ const Cadastro = () => {
         console.log('Registered with:', user.email);
       })
       .catch(error => alert(error.message))
+
+      enviarDados
   }
 
-const enviarDados = () => {
+  const enviarDados = () => {
     firestore
-    .collection('User')
-    .add({
-        id: user.id,
+    .collection('User').doc(user.uid)
+    .set({
+        id: user.uid,
         users: users,
         email: email,
     })
@@ -49,7 +52,6 @@ const enviarDados = () => {
     })
     .catch(error => alert(error.message))
 }
-
 
   return (
     <KeyboardAvoidingView
