@@ -27,21 +27,22 @@ const Cadastro = () => {
 
   const handleSignUp = () => {
     auth
-.createUserWithEmailAndPassword(email, password)
-.then((userCredentials) => {
-const user = userCredentials.user;
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+            const user = userCredentials.user;
 
-const reference = firestore
-.collection("User")
-.doc(auth.currentUser.uid);
-reference.set({
-email: email,
-// password: password,
-users: users,
-});
-console.log("Registered with:", user.email);
-})
-.catch((error) => alert(error.message));
+            const reference = firestore
+                .collection("User")
+                .doc(auth.currentUser.uid);
+
+            reference.set({
+                email: email,
+                users: users,
+            });
+
+            console.log("Registered with:", user.email);
+          })
+            .catch((error) => alert(error.message));
 }
   
 

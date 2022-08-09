@@ -11,7 +11,6 @@ import Home from './HomeScreen'
 import Escrever from './Escrever';
 import Login from "./LoginScreen";
 import ListarScreen from "./Listar";
-import ListarcomFiltroScreen from "./ListarComFiltro";
 
 
 const Drawer = createDrawerNavigator();
@@ -36,11 +35,7 @@ const HomeScreen = () => {
   <ListarScreen></ListarScreen>
   );
 }
-function ListarComFiltro(params) {
-  return(
-  <ListarcomFiltroScreen></ListarcomFiltroScreen>
-  );
-}
+
 function Cadastrar(params){
   return(
         <Cadastro></Cadastro>
@@ -57,7 +52,6 @@ function Cadastrar(params){
         <Drawer.Screen name="Login"             component={LoginScreen}/>
         <Drawer.Screen name="Escrever"          component={EscreverScreen}/>
         <Drawer.Screen name="Listar"            component={Listar}/>
-        <Drawer.Screen name="Listar com filtro" component={ListarComFiltro}/>
         <Drawer.Screen name="Cadastrar"         component={Cadastrar} />
       </Drawer.Navigator>
   )
