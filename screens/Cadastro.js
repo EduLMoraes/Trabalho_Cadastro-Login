@@ -30,8 +30,9 @@ const Cadastro = () => {
 .createUserWithEmailAndPassword(email, password)
 .then((userCredentials) => {
 const user = userCredentials.user;
+
 const reference = firestore
-.collection("Usuario")
+.collection("User")
 .doc(auth.currentUser.uid);
 reference.set({
 email: email,
