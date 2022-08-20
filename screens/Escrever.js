@@ -5,21 +5,19 @@ import MeuEstilo from '../meuestilo'
 import { auth,firestore } from '../firebase'
 
 const Escrever = () => {
-  const [casa,  setCasa] = useState('')
-  const [lat,   setLat] = useState('')
-  const [long,  setLong] = useState('')
+  const [helicoptero,  setHelicoptero] = useState('')
+  const [modelo,   setModelo] = useState('')
   
-  const ref = firestore.collection('User').doc(auth.currentUser.uid).collection('Casa').doc()
+  const ref = firestore.collection('User').doc(auth.currentUser.uid).collection('Helicoptero').doc()
 
   const enviarDados = () => {
      ref.set({
-       casa:  casa,
-       lat:   lat, 
-       long:  long,
+       helicoptero:  helicoptero,
+       modelo:   modelo, 
        id: ref.id, 
      })
      .then(() => {
-       alert('Casa '+casa+' Adicionado com Sucesso')
+       alert('helicoptero '+helicoptero+' Adicionado com Sucesso')
      });
   }
 
@@ -34,21 +32,15 @@ const Escrever = () => {
     >
       <View style={MeuEstilo.inputcontainerlistar}>
         <TextInput
-          placeholder="casa"
-          value={casa}
-          onChangeText={text => setCasa(text)}
+          placeholder="helicoptero"
+          value={helicoptero}
+          onChangeText={text => setHelicoptero(text)}
           style={MeuEstilo.input}
         />
         <TextInput
-          placeholder="Latitude"
-          value={lat}
-          onChangeText={text => setLat(text)}
-          style={MeuEstilo.input}
-        />
-          <TextInput
-          placeholder="Longitude"
-          value={long}
-          onChangeText={text => setLong(text)}
+          placeholder="modelo"
+          value={modelo}
+          onChangeText={text => setModelo(text)}
           style={MeuEstilo.input}
         />
        

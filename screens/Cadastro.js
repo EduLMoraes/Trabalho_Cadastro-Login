@@ -6,6 +6,7 @@ import { auth } from '../firebase'
 
 const Cadastro = () => {
   const [users, setUsers] = useState('')
+  const [cpf, setCpf] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -31,13 +32,13 @@ const Cadastro = () => {
         .then((userCredentials) => {
             const user = userCredentials.user;
 
-            const reference = firestore
-                .collection("User")
-                .doc(auth.currentUser.uid);
+            reference = firestore.collection('User').doc(auth.currentUser.uid)
 
             reference.set({
                 email: email,
                 users: users,
+                id: user.uid,
+                cpf: cpf
             });
 
             console.log("Registered with:", user.email);
@@ -58,6 +59,12 @@ const Cadastro = () => {
           placeholder="Usuario"
           value={users}
           onChangeText={text => setUsers(text)}
+          style={styles.input}
+        />
+         <TextInput
+          placeholder="cpf"
+          value={cpf}
+          onChangeText={text => setCpf(text)}
           style={styles.input}
         />
         <TextInput

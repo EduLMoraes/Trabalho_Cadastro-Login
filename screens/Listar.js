@@ -5,19 +5,19 @@ import MeuEstilo from '../meuestilo';
 
 const Listar = () => {
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [casas, setCasas] = useState([]); // Initial empty array of users
+  const [helicopteros, setHelicopteros] = useState([]); // Initial empty array of users
 
   useEffect(() => {
-    const subscriber = firestore.collection('Casa')
+    const subscriber = firestore.collection('Helicoptero')
       .onSnapshot(querySnapshot => {
-        const casas = [];
+        const helicopteros = [];
         querySnapshot.forEach(documentSnapshot => {
-          casas.push({
+          helicopteros.push({
             ...documentSnapshot.data(),
             key: documentSnapshot.nome,
           });
         });
-        setCasas(casas);
+        setHelicopteros(helicopteros);
         setLoading(false);
       });
     // Unsubscribe from events when no longer in use
@@ -38,7 +38,7 @@ const Item = ({ nome }) => (
 
   const renderItem = ({ item }) => <Item nome={item.nome} />;
 
-  // const getcasas= ()=>{
+  // const gethelicopteros= ()=>{
   //   setGatos([]);
   //   firestore
   //   .collection('Helicoptero')
@@ -46,11 +46,11 @@ const Item = ({ nome }) => (
   //     //querySnapshot.forEach(documentSnapshot=>{
   //     querySnapshot.docChanges().forEach(change=>{
         
-  //       casas.push({...change.doc.data(),
+  //       helicopteros.push({...change.doc.data(),
   //         key: change.nome,
   //       });
   //     });
-  //     setCasas(casas);
+  //     setHelicopteros(helicopteros);
   //     // setCarregando(false);
   //   });
   //   // return()=>subscriber();
@@ -74,12 +74,12 @@ const Item = ({ nome }) => (
   return (
     <SafeAreaView style={MeuEstilo.containerlistar}>
       <FlatList 
-      data={casass} 
+      data={helicopteross} 
       renderItem={renderItem} 
       keyExtractor={item => item.nome} 
       // refreshing={true}
       // onRefresh={() => {
-      //   getcasas();
+      //   gethelicopteros();
       // }}
       />
     </SafeAreaView>
